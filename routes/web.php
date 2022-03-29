@@ -14,6 +14,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,4 +55,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('contact', ContactController::class);
     Route::resource('section', SectionController::class);
     Route::resource('sosmed', SosmedController::class);
+});
+
+Route::get('/install', function () {
+    shell_exec('composer install');
+    Artisan::call('key:generate');
+    Artisan::call('migrate');
+    Artisan::call('db:seed');
+    Artisan::call('storage:link');
 });
