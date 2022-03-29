@@ -57,10 +57,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('sosmed', SosmedController::class);
 });
 
-Route::get('/install', function () {
-    shell_exec('composer install');
-    Artisan::call('key:generate');
-    Artisan::call('migrate:fresh');
-    Artisan::call('db:seed');
-    Artisan::call('storage:link');
-});
+// Route::get('/install', function () {
+//     shell_exec('composer install');
+//     Artisan::call('key:generate');
+//     Artisan::call('migrate:fresh');
+//     Artisan::call('db:seed');
+//     Artisan::call('storage:link');
+// });
