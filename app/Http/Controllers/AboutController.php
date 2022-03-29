@@ -30,7 +30,7 @@ class AboutController extends Controller
             if ($request->file('image')) {
                 Storage::delete($about->image);
                 $image = $request->file('image');
-                $attr['image'] = $image->storeAs('images/about', date('YmdHis') . '.' . $image->extension());
+                $attr['image'] = $image->storeAs('images/about', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
             } else {
                 $attr['image'] = $about->image;
             }

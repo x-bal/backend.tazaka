@@ -123,9 +123,7 @@
 
                 <div class="section-title">
                     <h2>Services</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Service')->first()->content ?? 'This is our service' }}</p>
                 </div>
 
                 <div class="row gy-4" id="service-list">
@@ -141,9 +139,7 @@
 
                 <div class="section-title">
                     <h2>Our Clients</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Client')->first()->content ?? 'This is our clients' }}</p>
                 </div>
 
                 <div class="row" id="list-client">
@@ -159,9 +155,7 @@
 
                 <div class="section-title">
                     <h2>Testimonials</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Testimonial')->first()->content ?? 'This is our testimonial' }}</p>
                 </div>
 
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -180,9 +174,7 @@
 
                 <div class="section-title">
                     <h2>Portfolio</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Portfolio')->first()->content ?? 'This is our portfolio' }}</p>
                 </div>
 
                 <div class="row">
@@ -222,7 +214,7 @@
 
                 <div class="section-title" data-aos="fade-up">
                     <h2>Team</h2>
-                    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+                    <p>{{ App\Models\Section::where('section', 'Team')->first()->content ?? 'This is our team' }}</p>
                 </div>
 
                 <div class="row" id="list-team">
@@ -238,9 +230,7 @@
 
                 <div class="section-title">
                     <h2>Our Product</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Product')->first()->content ?? 'This is our product' }}</p>
                 </div>
 
                 <div class="row" id="list-product">
@@ -257,9 +247,7 @@
 
                 <div class="section-title">
                     <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                        in iste officiis commodi quidem hic quas.</p>
+                    <p>{{ App\Models\Section::where('section', 'Contact')->first()->content ?? 'This is our contact' }}</p>
                 </div>
 
                 <div class="row">
@@ -363,7 +351,7 @@
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>{{ App\Models\Section::where('section', 'Newsletter')->first()->content ?? 'This is our newsletter' }}</p>
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
@@ -382,11 +370,9 @@
                     </div>
                 </div>
                 <div class="social-links text-center text-md-right pt-3 pt-md-0">
-                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    @foreach(App\Models\Sosmed::where('is_active', 1)->get() as $sosmed)
+                    <a href="https://{{ $sosmed->link }}" target="__blank"><i class="{{ $sosmed->icon }}"></i></a>
+                    @endforeach
                 </div>
             </div>
 

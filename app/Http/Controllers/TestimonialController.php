@@ -35,7 +35,7 @@ class TestimonialController extends Controller
             DB::beginTransaction();
 
             $image = $request->file('image');
-            $attr['image'] = $image->storeAs('images/testimonial', date('YmdHis') . '.' . $image->extension());
+            $attr['image'] = $image->storeAs('images/testimonial', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
 
             Testimonial::create($attr);
 
@@ -71,7 +71,7 @@ class TestimonialController extends Controller
             if ($request->file('image')) {
                 Storage::delete($testimonial->image);
                 $image = $request->file('image');
-                $attr['image'] = $image->storeAs('images/testimonial', date('YmdHis') . '.' . $image->extension());
+                $attr['image'] = $image->storeAs('images/testimonial', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
             } else {
                 $attr['image'] = $testimonial->image;
             }

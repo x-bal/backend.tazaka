@@ -35,7 +35,7 @@ class ProductController extends Controller
             DB::beginTransaction();
 
             $image = $request->file('image');
-            $attr['image'] = $image->storeAs('images/product', date('YmdHis') . '.' . $image->extension());
+            $attr['image'] = $image->storeAs('images/product', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
 
             Product::create($attr);
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
             if ($request->file('image')) {
                 Storage::delete($product->image);
                 $image = $request->file('image');
-                $attr['image'] = $image->storeAs('images/product', date('YmdHis') . '.' . $image->extension());
+                $attr['image'] = $image->storeAs('images/product', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
             } else {
                 $attr['image'] = $product->image;
             }

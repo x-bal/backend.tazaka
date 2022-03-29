@@ -18,7 +18,7 @@ class SectionController extends Controller
     public function create()
     {
         $section = new Section();
-        $sections = ['Home', 'About', 'Service', 'Client', 'Testimonial', 'Portfolio', 'Team', 'Product', 'Contact'];
+        $sections = ['Service', 'Client', 'Testimonial', 'Portfolio', 'Team', 'Product', 'Contact', 'Newsletter'];
 
         return view('section.create', compact('sections', 'section'));
     }
@@ -50,7 +50,7 @@ class SectionController extends Controller
 
     public function edit(Section $section)
     {
-        $sections = ['Home', 'About', 'Service', 'Client', 'Testimonial', 'Portfolio', 'Team', 'Product', 'Contact'];
+        $sections = ['Service', 'Client', 'Testimonial', 'Portfolio', 'Team', 'Product', 'Contact', 'Newsletter'];
 
         return view('section.edit', compact('sections', 'section'));
     }

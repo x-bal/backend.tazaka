@@ -34,7 +34,7 @@ class ClientController extends Controller
             DB::beginTransaction();
 
             $logo = $request->file('logo');
-            $attr['logo'] = $logo->storeAs('images/logo', date('YmdHis') . '.' . $logo->extension());
+            $attr['logo'] = $logo->storeAs('images/logo', date('Ymd') . rand(1000, 9999) . '.' . $logo->extension());
 
             $attr['description'] = $request->description;
 
@@ -71,7 +71,7 @@ class ClientController extends Controller
             if ($request->file('logo')) {
                 Storage::delete($client->logo);
                 $logo = $request->file('logo');
-                $attr['logo'] = $logo->storeAs('images/logo', date('YmdHis') . '.' . $logo->extension());
+                $attr['logo'] = $logo->storeAs('images/logo', date('Ymd') . rand(1000, 9999) . '.' . $logo->extension());
             } else {
                 $attr['logo'] = $client->logo;
             }

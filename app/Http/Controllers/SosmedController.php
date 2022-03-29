@@ -4,82 +4,88 @@ namespace App\Http\Controllers;
 
 use App\Models\Sosmed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use function Ramsey\Uuid\v1;
 
 class SosmedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $sosmeds = Sosmed::get();
+
+        return view('sosmed.index', compact('sosmeds'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $sosmed = new Sosmed();
+
+        return view('sosmed.create', compact('sosmed'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $attr = $request->validate([
+            'icon' => 'required',
+            'link' => 'required',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            Sosmed::create($attr);
+
+            DB::commit();
+
+            return redirect()->route('sosmed.index')->with('success', 'Your sosmed successfully added');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sosmed  $sosmed
-     * @return \Illuminate\Http\Response
-     */
     public function show(Sosmed $sosmed)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sosmed  $sosmed
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Sosmed $sosmed)
     {
-        //
+        return view('sosmed.edit', compact('sosmed'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sosmed  $sosmed
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Sosmed $sosmed)
     {
-        //
+        $attr = $request->validate([
+            'icon' => 'required',
+            'link' => 'required',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $sosmed->update($attr);
+
+            DB::commit();
+
+            return redirect()->route('sosmed.index')->with('success', 'Your sosmed successfully updated');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sosmed  $sosmed
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Sosmed $sosmed)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $sosmed->delete();
+
+            DB::commit();
+
+            return redirect()->route('sosmed.index')->with('success', 'Your sosmed successfully deleted');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 }

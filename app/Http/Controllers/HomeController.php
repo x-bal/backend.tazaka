@@ -30,7 +30,7 @@ class HomeController extends Controller
             if ($request->file('image')) {
                 Storage::delete($home->image);
                 $image = $request->file('image');
-                $attr['image'] = $image->storeAs('images/home', date('YmdHis') . '.' . $image->extension());
+                $attr['image'] = $image->storeAs('images/home', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
             } else {
                 $attr['image'] = $home->image;
             }

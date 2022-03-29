@@ -15,6 +15,9 @@ class CreateSosmedsTable extends Migration
     {
         Schema::create('sosmeds', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
+            $table->string('link');
+            $table->integer('is_active')->default(1);
             $table->timestamps();
         });
     }

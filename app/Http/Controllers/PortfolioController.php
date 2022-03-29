@@ -40,7 +40,7 @@ class PortfolioController extends Controller
             DB::beginTransaction();
 
             $image = $request->file('image');
-            $attr['image'] = $image->storeAs('images/portfolio', date('YmdHis') . '.' . $image->extension());
+            $attr['image'] = $image->storeAs('images/portfolio', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
 
             Portfolio::create($attr);
 
@@ -80,7 +80,7 @@ class PortfolioController extends Controller
             if ($request->file('image')) {
                 Storage::delete($portfolio->image);
                 $image = $request->file('image');
-                $attr['image'] = $image->storeAs('images/portfolio', date('YmdHis') . '.' . $image->extension());
+                $attr['image'] = $image->storeAs('images/portfolio', date('Ymd') . rand(1000, 9999) . '.' . $image->extension());
             } else {
                 $attr['image'] = $portfolio->image;
             }
