@@ -17,7 +17,7 @@ $.ajax({
     $("#about-title").append(response.about.title)
     $("#about-sub_title").append(response.about.sub_title)
     $("#about-content").append(response.about.content)
-    $("#about-hero").append(`<img src="` + response.about.image + `" class="img-fluid" alt="">`)
+    $("#about-hero").append(`<img src="` + response.about.image + `" class="" width="250" alt="">`)
   }
 })
 
@@ -66,8 +66,12 @@ $.ajax({
   type: 'GET',
   success: function (response) {
     $.each(response.client, function (i, data) {
-      $("#list-client").append(`<div class="col-md-4">
+      $("#list-client").append(`<div class="col-md-4 mb-3">
         <img src="`+ data.logo + `" alt="" class="img-fluid">
+
+        <div class="mt-3 text-center">
+            <h5>`+ data.name + `</h5>
+          </div>
       </div>`)
     })
   }

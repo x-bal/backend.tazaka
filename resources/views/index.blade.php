@@ -83,7 +83,7 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150" id="about-hero">
+                    <div class="col-lg-6 text-center order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150" id="about-hero">
 
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
