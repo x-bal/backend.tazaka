@@ -66,7 +66,7 @@ $.ajax({
   type: 'GET',
   success: function (response) {
     $.each(response.client, function (i, data) {
-      $("#list-client").append(`<div class="col-md-4 mb-3">
+      $("#list-client").append(`<div class="col-md-3 mb-3">
         <img src="`+ data.logo + `" alt="" class="img-fluid">
 
         <div class="mt-3 text-center">
