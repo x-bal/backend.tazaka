@@ -8,9 +8,21 @@ $.ajax({
     $("#email").append(response.contact.email)
     $("#telp").append(response.contact.telp)
     $("#maps").attr('src', response.contact.maps)
-    $("#footer-contact").append(`` + response.contact.addres + ` <br><br>
+
+    $("#footer-contact").append(`` + response.contact.addres + ` <br>
         <strong>Phone:</strong> `+ response.contact.telp + `<br>
         <strong>Email:</strong> `+ response.contact.email + `<br>`)
+  }
+})
+
+$.ajax({
+  url: baseUrl + 'service',
+  type: 'GET',
+  success: function (response) {
+    $.each(response.service, function (i, data) {
+      $("#our-service").append(`<li><i class="bx bx-chevron-right"></i> <a href="javascript:void()">` + data.title + `</a></li>`)
+    })
+
   }
 })
 

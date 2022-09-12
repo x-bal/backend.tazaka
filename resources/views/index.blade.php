@@ -237,7 +237,7 @@
                             </div>
                             <div class="portfolio-links">
                                 <a href="{{ asset('storage/'. $portfolio->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $portfolio->name }}"></a>
-                                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+                                <a href="{{ route('detail.portfolio', $portfolio->id) }}" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
         </section>
 
         <!-- ======= Procuct Section ======= -->
-        <section id="product" class="team section-bg">
+        <section id="product" class="portfolio section-bg">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-up">
@@ -289,18 +289,17 @@
                     <p>{{ App\Models\Section::where('section', 'Product')->first()->content ?? 'This is our product' }}</p>
                 </div>
 
-                <div class="row">
+                <div class="row portfolio-container" id="">
                     @foreach(App\Models\Product::get() as $product)
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-img">
-                                <img src="{{ asset('/storage/'.$product->image) }}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <p>{{ $product->description }}</p>
-                                </div>
-                            </div>
-                            <div class="member-info">
+                    <div class="col-md-4 portfolio-item">
+                        <div class="portfolio-wrap text-center">
+                            <img src="{{ asset('storage/'. $product->image) }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
                                 <h4>{{ $product->name }}</h4>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('storage/'. $product->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $product->name }}"></a>
+                                <a href="{{ route('detail.product', $product->id) }}" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
                     </div>
@@ -394,7 +393,8 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Tazaka</h3>
+                        <img src="{{ asset('front') }}/img/logo1.png" alt="" class="img-fluid" width="300"><br><br>
+
                         <p id="footer-contact">
 
                         </p>

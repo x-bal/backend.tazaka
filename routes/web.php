@@ -14,6 +14,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\WelcomeController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -29,9 +31,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/detail/product/{product:id}', [WelcomeController::class, 'detailproduct'])->name('detail.product');
+Route::get('/detail/portfolio/{portfolio:id}', [WelcomeController::class, 'detailportfolio'])->name('detail.portfolio');
+
 
 Auth::routes([
     'register' => false,
