@@ -291,7 +291,7 @@
 
                 <div class="row portfolio-container" id="">
                     @foreach(App\Models\Product::get() as $product)
-                    <div class="col-md-4 portfolio-item">
+                    <div class="col-md-3 portfolio-item">
                         <div class="portfolio-wrap text-center">
                             <img src="{{ asset('storage/'. $product->image) }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
