@@ -141,7 +141,7 @@
                                 {!! $service->icon !!}
                             </div>
                             <h4><a href="">{{ $service->title }}</a></h4>
-                            <p>{{ $service->description }}</p>
+                            <p>{!! $service->description !!}</p>
                         </div>
                     </div>
                     @endforeach
