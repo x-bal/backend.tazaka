@@ -26,9 +26,9 @@ $.ajax({
   }
 })
 
-$('.php-email-form').submit(function (e) {
-  console.log("ok");
-  var dataStr = "nama" + ":" + $('#name').val() + "\n" + "email" + ":" + $('#email').val() + "\n" + "subject" + ":" + $('#subject').val() + "message" + ":" + $('#message').val() + "\n";
+$('.btn-send').click(function (e) {
+
+  var dataStr = "Nama" + ":" + $('#name').val() + "\n" + "Email" + ":" + $('#email-form').val() + "\n" + "Subject" + ":" + $('#subject').val() + "\n" + "Message" + ":" + $('#message').val() + "\n";
 
   e.preventDefault();
   $.ajax({
@@ -38,9 +38,11 @@ $('.php-email-form').submit(function (e) {
     data: { chat_id: '900448515', text: dataStr },
     success: function () {
       $("#name").val("");
-      $("#email").val("");
+      $("#email-form").val("");
       $("#subject").val("");
       $("#message").val("");
+
+      location.reload()
     }
   });
 });
