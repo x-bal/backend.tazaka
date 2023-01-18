@@ -45,7 +45,7 @@
                     <li><a class="nav-link scrollto active" href="#about">About</a></li>
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li><a class="nav-link scrollto" href="#clients">Clients</a></li>
-                    <li><a class="nav-link scrollto" href="#testimonials">Testimonial</a></li>
+                    <li><a class="nav-link scrollto" href="#testimonials">Support Project</a></li>
                     <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto " href="#product">Product</a></li>
@@ -179,30 +179,20 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Testimonials</h2>
-                    <p>{{ App\Models\Section::where('section', 'Testimonial')->first()->content ?? 'This is our testimonial' }}</p>
+                    <h2>Support Project</h2>
+                    <p>{{ App\Models\Section::where('section', 'Testimonial')->first()->content ?? 'This is our support projects' }}</p>
                 </div>
+                <div class="row">
+                    @foreach(App\Models\Testimonial::get() as $testi)
+                    <div class="col-md-2 mb-3">
+                        <img src="{{ asset('/storage/'.$testi->image) }}" alt="" class="img-fluid">
 
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-                        @foreach(App\Models\Testimonial::get() as $testi)
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    {{ $testi->desc }}
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                                <img src="{{ asset('/storage/'.$testi->image) }}" class="testimonial-img" alt="">
-                                <h3>{{ $testi->name }}</h3>
-                            </div>
+                        <div class="mt-3 text-center">
+                            <h6>{{ $testi->name }}</h6>
                         </div>
-                        @endforeach
-
                     </div>
-                    <div class="swiper-pagination"></div>
+                    @endforeach
                 </div>
-
             </div>
         </section><!-- End Testimonials Section -->
 
@@ -422,7 +412,8 @@
                         <h4>Join Our Newsletter</h4>
                         <p>{{ App\Models\Section::where('section', 'Newsletter')->first()->content ?? 'This is our newsletter' }}</p>
                         <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                            <input type="text" name="msg" id="msg-news">
+                            <input type="button" class="btn-news" value="Subscribe">
                         </form>
                     </div>
 

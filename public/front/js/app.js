@@ -46,3 +46,21 @@ $('.btn-send').click(function (e) {
     }
   });
 });
+
+$('.btn-news').click(function (e) {
+
+  var dataStr = $("#msg-news").val();
+
+  e.preventDefault();
+  $.ajax({
+    url: "https://api.telegram.org/bot1059144067:AAECI0pEjtuwBlfGKvb4W0mWB6MjzMj56Nk/sendMessage",
+
+    method: 'POST',
+    data: { chat_id: '900448515', text: dataStr },
+    success: function () {
+      $("#msg-news").val("");
+
+      location.reload()
+    }
+  });
+});
