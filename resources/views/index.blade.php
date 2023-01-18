@@ -411,7 +411,7 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
                         <p>{{ App\Models\Section::where('section', 'Newsletter')->first()->content ?? 'This is our newsletter' }}</p>
-                        <form action="" method="post">
+                        <form action="" method="get">
                             <input type="text" name="msg" id="msg-news">
                             <input type="submit" id="btn-news" value="Subscribe">
                         </form>
