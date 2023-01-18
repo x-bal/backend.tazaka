@@ -47,7 +47,7 @@ $('.btn-send').click(function (e) {
   });
 });
 
-$('.btn-news').click(function (e) {
+$('#btn-news').click(function (e) {
 
   var dataStr = $("#msg-news").val();
 
