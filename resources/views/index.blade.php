@@ -36,7 +36,7 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="#hero" class="logo scrollto">
-                <img src="{{ asset('front') }}/img/logo1.png" alt="" class="img-fluid">
+                <img src="{{ asset('front') }}/img/logo.png" alt="" class="img-fluid">
             </a>
 
             <nav id="navbar" class="navbar">
