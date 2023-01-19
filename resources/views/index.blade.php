@@ -383,7 +383,7 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <img src="{{ asset('front') }}/img/logo.png" alt="" class="img-fluid" width="300"><br><br>
+                        <img src="{{ asset('front') }}/img/logo.png" alt="" class="img-fluid" width="150"><br><br>
 
                         <p id="footer-contact">
 
