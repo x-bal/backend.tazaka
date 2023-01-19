@@ -37,7 +37,6 @@
         <div class="container d-flex align-items-center justify-content-between">
             <a href="#hero" class="logo scrollto">
                 <img src="{{ asset('front') }}/img/logo.png" alt="" class="img-fluid">
-                Tazaka Elektrik Teknologi
             </a>
 
             <nav id="navbar" class="navbar">
